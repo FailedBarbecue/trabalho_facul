@@ -1,0 +1,91 @@
+<!DOCTYPE html5>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilo.css" />
+    <title>Trabalho uninter javascript html css</title>
+  </head>
+  <body>
+    <header>
+      <h1>Meu Portfólio</h1>
+      <nav>
+        <ul>
+          <li><a href="#sobre-mim" class="section-link">Sobre Mim</a></li>
+          <li><a href="#formacao" class="section-link">Formação</a></li>
+          <li><a href="#portfolio" class="section-link">Portfólio</a></li>
+          <li><a href="#contato" class="section-link">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="sobre-mim" class="hidden-section selected-section">
+      <h2>Sobre Mim</h2>
+      <p>
+        Olá, meu nome é Eduardo Schiavo, tenho 20 anos, nasci em Joinville e
+        meus hobbies são assistir séries, sair com amigos, jogar video games e
+        programar
+      </p>
+    </section>
+
+    <section id="formacao" class="hidden-section">
+      <h2>Formação e Idiomas</h2>
+      <p>
+        Me formei no ensino médio e atualmente estou no primeiro ano da
+        faculdade de análise e desenvolvimento de sistemas. Falo português e
+        inglês fluentemente e aprendi a programar sozinho em: HTML, CSS
+        Javascript e Ruby
+      </p>
+    </section>
+
+    <section id="portfolio" class="hidden-section">
+      <h2>Meu Portfólio</h2>
+      <p>Acesse meu github, tenho outros códigos por lá :D</p>
+      <ul>
+        <li>
+          <a target="_blank" href="https://github.com/FailedBarbecue">github</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contato" class="hidden-section">
+      <h2>Contato</h2>
+      <p>Me mande uma mensagem por email</p>
+      <form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <script>
+      const sectionLinks = document.querySelectorAll(".section-link");
+      const sections = document.querySelectorAll(".hidden-section");
+
+      // faz com que a seção "sobre mim" comece ativa quando entra no site
+      const defaultSection = document.getElementById("sobre-mim");
+      defaultSection.classList.remove("hidden-section");
+
+      sectionLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          const sectionId = link.getAttribute("href").substring(1);
+          const section = document.getElementById(sectionId);
+
+          // Esconde todas as seções, exceto a que foi clicada
+          sections.forEach((s) => {
+            if (s !== section) {
+              s.classList.add("hidden-section");
+            }
+          });
+
+          // Exibe a seção clicada
+          section.classList.remove("hidden-section");
+        });
+      });
+    </script>
+  </body>
+</html>
